@@ -614,11 +614,10 @@
             const toggle = document.querySelector('.theme-toggle');
             const html = document.documentElement;
 
-            // Charger le thème sauvegardé ou préférence système
+            // Charger le thème sauvegardé (défaut: clair)
             const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            if (savedTheme === 'dark') {
                 html.setAttribute('data-theme', 'dark');
             }
 
