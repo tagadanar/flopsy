@@ -1,0 +1,71 @@
+{
+  "site": {
+    "title": "Florianne Duré - Psychologue Clinicienne à Lyon",
+    "description": "Florianne Duré, psychologue clinicienne à Lyon 3ème. Consultations sur rendez-vous. Accompagnement personnalisé pour adultes et adolescents."
+  },
+  "hero": {
+    "name": "Florianne Duré",
+    "title": "Psychologue Clinicienne",
+    "tagline": "Un espace d'écoute bienveillant pour vous accompagner vers un mieux-être",
+    "buttonText": "Prendre rendez-vous"
+  },
+  "apropos": {
+    "title": "À propos",
+    "description": "Psychologue clinicienne diplômée, je vous accueille dans mon cabinet à Lyon 3ème pour un accompagnement adapté à vos besoins. Mon approche se veut bienveillante et respectueuse de votre rythme, dans un cadre confidentiel et sécurisant.",
+    "parcoursTitle": "Mon parcours",
+    "parcours": [
+      "Master 2 en Psychologie Clinique et Psychopathologie",
+      "Formation complémentaire en psychothérapie",
+      "Expérience en milieu hospitalier et institutionnel"
+    ]
+  },
+  "consultations": {
+    "title": "Consultations",
+    "cards": [
+      {
+        "title": "Adultes",
+        "description": "Accompagnement face aux difficultés de la vie : anxiété, dépression, transitions, questionnements personnels..."
+      },
+      {
+        "title": "Adolescents",
+        "description": "Soutien durant cette période de changements : mal-être, difficultés scolaires, relations familiales..."
+      },
+      {
+        "title": "Soutien parental",
+        "description": "Accompagnement des parents face aux défis éducatifs et relationnels avec leurs enfants."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact & Informations pratiques",
+    "coordonneesTitle": "Coordonnées",
+    "adresse": {
+      "label": "Adresse du cabinet",
+      "lines": ["86 rue Paul Bert", "69003 Lyon"],
+      "latitude": 45.7597,
+      "longitude": 4.8565
+    },
+    "horaires": {
+      "label": "Horaires",
+      "lines": ["Lundi au Samedi", "10h00 - 19h00"]
+    },
+    "email": {
+      "label": "Email",
+      "value": "fdure.psychologue@gmail.com"
+    },
+    "doctolib": {
+      "text": "Prendre rendez-vous sur Doctolib",
+      "url": "https://www.doctolib.fr/psychologue/lyon/florianne-dure"
+    }
+  },
+  "footer": {
+    "copyright": "2025 Florianne Duré - Psychologue Clinicienne",
+    "adeli": "N° ADELI : 69 93 XXXX X"
+  },
+  "navigation": [
+    { "text": "Accueil", "href": "#accueil" },
+    { "text": "À propos", "href": "#apropos" },
+    { "text": "Consultations", "href": "#consultations" },
+    { "text": "Contact", "href": "#contact" }
+  ]
+}

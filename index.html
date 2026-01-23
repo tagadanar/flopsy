@@ -8,639 +8,95 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-    <style>
-        /* ============================================
-           COULEURS ET VARIABLES - MODIFIER ICI
-           ============================================ */
-        :root {
-            --couleur-principale: #7B8E7B;      /* Vert sauge apaisant */
-            --couleur-secondaire: #A8B5A0;      /* Vert clair */
-            --couleur-accent: #D4C5B5;          /* Beige doux */
-            --couleur-texte: #3D3D3D;           /* Gris foncé */
-            --couleur-texte-clair: #6B6B6B;     /* Gris moyen */
-            --couleur-fond: #FDFCFB;            /* Blanc cassé */
-            --couleur-fond-section: #F7F5F3;   /* Beige très clair */
-            --couleur-carte: #FFFFFF;           /* Blanc pour les cartes */
-            --nav-bg: rgba(253, 252, 251, 0.95);
-            --shadow-color: rgba(0, 0, 0, 0.05);
-        }
-
-        /* ============================================
-           THEME SOMBRE
-           ============================================ */
-        [data-theme="dark"] {
-            --couleur-principale: #9AAF9A;      /* Vert sauge plus clair */
-            --couleur-secondaire: #7A8B72;      /* Vert moyen */
-            --couleur-accent: #4A4540;          /* Beige foncé */
-            --couleur-texte: #E8E6E3;           /* Gris très clair */
-            --couleur-texte-clair: #B0ADA8;     /* Gris clair */
-            --couleur-fond: #1A1A1A;            /* Noir doux */
-            --couleur-fond-section: #242424;   /* Gris très foncé */
-            --couleur-carte: #2A2A2A;           /* Gris foncé pour les cartes */
-            --nav-bg: rgba(26, 26, 26, 0.95);
-            --shadow-color: rgba(0, 0, 0, 0.3);
-        }
-
-        /* ============================================
-           STYLES DE BASE
-           ============================================ */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            font-weight: 300;
-            color: var(--couleur-texte);
-            background-color: var(--couleur-fond);
-            line-height: 1.7;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 500;
-        }
-
-        /* ============================================
-           NAVIGATION
-           ============================================ */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: var(--nav-bg);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(123, 142, 123, 0.1);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        nav ul {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            list-style: none;
-        }
-
-        /* Bouton theme toggle */
-        .theme-toggle {
-            position: absolute;
-            right: 1rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: background-color 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .theme-toggle:hover {
-            background-color: var(--couleur-fond-section);
-        }
-
-        .theme-toggle svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--couleur-texte);
-            transition: fill 0.3s ease;
-            display: block;
-        }
-
-        .theme-toggle .icon-moon { display: block; }
-        .theme-toggle .icon-sun { display: none; }
-
-        [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
-        [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
-
-        nav a {
-            text-decoration: none;
-            color: var(--couleur-texte);
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: var(--couleur-principale);
-        }
-
-        /* ============================================
-           SECTION HERO (ACCUEIL)
-           ============================================ */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, var(--couleur-fond) 0%, var(--couleur-fond-section) 100%);
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            color: var(--couleur-principale);
-            margin-bottom: 0.5rem;
-            letter-spacing: 2px;
-        }
-
-        .hero .titre {
-            font-size: 1.2rem;
-            color: var(--couleur-texte-clair);
-            margin-bottom: 2rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-        .hero .accroche {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-style: italic;
-            color: var(--couleur-texte);
-            max-width: 600px;
-            margin-bottom: 3rem;
-        }
-
-        .btn-rdv {
-            display: inline-block;
-            background-color: var(--couleur-principale);
-            color: white;
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-rdv:hover {
-            background-color: #6A7D6A;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(123, 142, 123, 0.3);
-        }
-
-        /* ============================================
-           SECTIONS COMMUNES
-           ============================================ */
-        section {
-            padding: 6rem 2rem;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            color: var(--couleur-principale);
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        /* ============================================
-           SECTION À PROPOS / PARCOURS
-           ============================================ */
-        .apropos {
-            background-color: var(--couleur-fond-section);
-        }
-
-        .apropos-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .apropos p {
-            text-align: center;
-            font-size: 1.1rem;
-            color: var(--couleur-texte-clair);
-        }
-
-        .parcours-liste {
-            margin-top: 2rem;
-            padding: 2rem;
-            background: var(--couleur-carte);
-            border-radius: 10px;
-            box-shadow: 0 5px 30px var(--shadow-color);
-        }
-
-        .parcours-liste h3 {
-            color: var(--couleur-principale);
-            margin-bottom: 1.5rem;
-            text-align: center;
-            font-size: 1.5rem;
-        }
-
-        .parcours-liste ul {
-            list-style: none;
-        }
-
-        .parcours-liste li {
-            padding: 0.8rem 0;
-            padding-left: 2rem;
-            position: relative;
-            border-bottom: 1px solid var(--couleur-fond-section);
-        }
-
-        .parcours-liste li:last-child {
-            border-bottom: none;
-        }
-
-        .parcours-liste li::before {
-            content: "•";
-            color: var(--couleur-principale);
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-
-        /* ============================================
-           SECTION CONSULTATIONS
-           ============================================ */
-        .consultations {
-            background-color: var(--couleur-fond);
-        }
-
-        .consultations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .consultation-card {
-            background: var(--couleur-carte);
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 5px 30px var(--shadow-color);
-            transition: transform 0.3s ease;
-        }
-
-        .consultation-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .consultation-card h3 {
-            color: var(--couleur-principale);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .consultation-card p {
-            color: var(--couleur-texte-clair);
-            font-size: 0.95rem;
-        }
-
-        /* ============================================
-           SECTION CONTACT & INFOS PRATIQUES
-           ============================================ */
-        .contact {
-            background-color: var(--couleur-fond-section);
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3rem;
-            align-items: stretch;
-        }
-
-        .contact-info {
-            background: var(--couleur-carte);
-            padding: 2.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 30px var(--shadow-color);
-        }
-
-        .contact-info h3 {
-            color: var(--couleur-principale);
-            margin-bottom: 1.5rem;
-            font-size: 1.4rem;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-        }
-
-        .info-item .icon {
-            width: 24px;
-            height: 24px;
-            margin-right: 1rem;
-            fill: var(--couleur-principale);
-            flex-shrink: 0;
-        }
-
-        .info-item p {
-            color: var(--couleur-texte-clair);
-        }
-
-        .info-item a {
-            color: var(--couleur-principale);
-            text-decoration: none;
-        }
-
-        .info-item a:hover {
-            text-decoration: underline;
-        }
-
-        /* Carte Google Maps */
-        .map-container {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 30px var(--shadow-color);
-            min-height: 350px;
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            min-height: 350px;
-            border: none;
-        }
-
-        /* Bouton Doctolib */
-        .doctolib-inline {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--couleur-fond-section);
-        }
-
-        .btn-doctolib {
-            display: inline-block;
-            background-color: #107ACA;
-            color: white;
-            padding: 1rem 2.5rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-doctolib:hover {
-            background-color: #0D5A96;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(16, 122, 202, 0.3);
-        }
-
-        /* ============================================
-           FOOTER
-           ============================================ */
-        footer {
-            background-color: var(--couleur-principale);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        footer p {
-            font-size: 0.85rem;
-            opacity: 0.9;
-        }
-
-        footer .adeli {
-            margin-top: 0.5rem;
-            font-size: 0.8rem;
-            opacity: 0.7;
-        }
-
-        /* ============================================
-           RESPONSIVE
-           ============================================ */
-        @media (max-width: 768px) {
-            nav {
-                padding: 1rem 3.5rem 1rem 1rem;
-            }
-
-            nav ul {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: flex-start;
-            }
-
-            .theme-toggle {
-                right: 0.5rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero .accroche {
-                font-size: 1.2rem;
-            }
-
-            section {
-                padding: 4rem 1.5rem;
-            }
-
-            section h2 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- ============================================
-         NAVIGATION
-         ============================================ -->
+    <!-- NAVIGATION -->
     <nav>
-        <ul>
-            <li><a href="#accueil">Accueil</a></li>
-            <li><a href="#apropos">À propos</a></li>
-            <li><a href="#consultations">Consultations</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <ul id="nav-links"></ul>
         <button class="theme-toggle" aria-label="Changer de thème">
             <svg class="icon-moon" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/></svg>
             <svg class="icon-sun" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg>
         </button>
     </nav>
 
-    <!-- ============================================
-         SECTION ACCUEIL (HERO)
-         ============================================ -->
+    <!-- SECTION ACCUEIL (HERO) -->
     <section id="accueil" class="hero">
-        <h1>Florianne Duré</h1>
-        <p class="titre">Psychologue Clinicienne</p>
-
-        <!-- PHRASE D'ACCROCHE - À MODIFIER -->
-        <p class="accroche">
-            "Un espace d'écoute bienveillant pour vous accompagner vers un mieux-être"
-        </p>
-
-        <a href="#contact" class="btn-rdv">Prendre rendez-vous</a>
+        <h1 id="hero-name"></h1>
+        <p class="titre" id="hero-title"></p>
+        <p class="accroche" id="hero-tagline"></p>
+        <a href="#contact" class="btn-rdv" id="hero-button"></a>
     </section>
 
-    <!-- ============================================
-         SECTION À PROPOS / PARCOURS
-         ============================================ -->
+    <!-- SECTION À PROPOS / PARCOURS -->
     <section id="apropos" class="apropos">
         <div class="container">
-            <h2>À propos</h2>
-
+            <h2 id="apropos-title"></h2>
             <div class="apropos-content">
-                <!-- PRÉSENTATION - À MODIFIER -->
-                <p>
-                    Psychologue clinicienne diplômée, je vous accueille dans mon cabinet à Lyon 3ème
-                    pour un accompagnement adapté à vos besoins. Mon approche se veut bienveillante
-                    et respectueuse de votre rythme, dans un cadre confidentiel et sécurisant.
-                </p>
-
-                <!-- PARCOURS - À MODIFIER -->
+                <p id="apropos-description"></p>
                 <div class="parcours-liste">
-                    <h3>Mon parcours</h3>
-                    <ul>
-                        <li>Master 2 en Psychologie Clinique et Psychopathologie</li>
-                        <li>Formation complémentaire en psychothérapie</li>
-                        <li>Expérience en milieu hospitalier et institutionnel</li>
-                        <!-- Ajouter d'autres éléments du parcours ici -->
-                    </ul>
+                    <h3 id="parcours-title"></h3>
+                    <ul id="parcours-list"></ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================
-         SECTION CONSULTATIONS
-         ============================================ -->
+    <!-- SECTION CONSULTATIONS -->
     <section id="consultations" class="consultations">
         <div class="container">
-            <h2>Consultations</h2>
-
-            <!-- TYPES DE CONSULTATIONS - À MODIFIER -->
-            <div class="consultations-grid">
-                <div class="consultation-card">
-                    <h3>Adultes</h3>
-                    <p>Accompagnement face aux difficultés de la vie : anxiété, dépression, transitions, questionnements personnels...</p>
-                </div>
-
-                <div class="consultation-card">
-                    <h3>Adolescents</h3>
-                    <p>Soutien durant cette période de changements : mal-être, difficultés scolaires, relations familiales...</p>
-                </div>
-
-                <div class="consultation-card">
-                    <h3>Soutien parental</h3>
-                    <p>Accompagnement des parents face aux défis éducatifs et relationnels avec leurs enfants.</p>
-                </div>
-            </div>
+            <h2 id="consultations-title"></h2>
+            <div class="consultations-grid" id="consultations-grid"></div>
         </div>
     </section>
 
-    <!-- ============================================
-         SECTION CONTACT & INFOS PRATIQUES
-         ============================================ -->
+    <!-- SECTION CONTACT & INFOS PRATIQUES -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2>Contact & Informations pratiques</h2>
-
+            <h2 id="contact-title"></h2>
             <div class="contact-grid">
-                <!-- INFORMATIONS - À MODIFIER -->
                 <div class="contact-info">
-                    <h3>Coordonnées</h3>
+                    <h3 id="coordonnees-title"></h3>
 
                     <div class="info-item">
                         <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                        <p>
-                            <strong>Adresse du cabinet</strong><br>
-                            86 rue Paul Bert<br>
-                            69003 Lyon
-                        </p>
+                        <p id="adresse-content"></p>
                     </div>
 
                     <div class="info-item">
                         <svg class="icon" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-                        <p>
-                            <strong>Horaires</strong><br>
-                            Lundi au Samedi<br>
-                            10h00 - 19h00
-                        </p>
+                        <p id="horaires-content"></p>
                     </div>
 
                     <div class="info-item">
                         <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                        <p>
-                            <strong>Email</strong><br>
-                            <a href="mailto:fdure.psychologue@gmail.com">fdure.psychologue@gmail.com</a>
-                        </p>
+                        <p id="email-content"></p>
                     </div>
 
-                    <!-- BOUTON DOCTOLIB - MODIFIER LE LIEN -->
                     <div class="doctolib-inline">
-                        <!-- REMPLACER PAR LE LIEN DOCTOLIB : https://www.doctolib.fr/psychologue/lyon/florianne-dure -->
-                        <a href="https://www.doctolib.fr/psychologue/lyon/florianne-dure" class="btn-doctolib" target="_blank" rel="noopener">
-                            Prendre rendez-vous sur Doctolib
-                        </a>
+                        <a id="doctolib-link" class="btn-doctolib" target="_blank" rel="noopener"></a>
                     </div>
                 </div>
 
-                <!-- CARTE GOOGLE MAPS -->
                 <div class="map-container">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2783.5033839834847!2d4.8518!3d45.7578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ea5c8b8b8b8b%3A0x0!2s86%20Rue%20Paul%20Bert%2C%2069003%20Lyon!5e0!3m2!1sfr!2sfr!4v1234567890"
+                        id="map-iframe"
                         allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
+                        loading="lazy">
                     </iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================
-         FOOTER
-         ============================================ -->
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2025 Florianne Duré - Psychologue Clinicienne</p>
-        <!-- NUMÉRO ADELI - À MODIFIER AVEC LE VRAI NUMÉRO -->
-        <p class="adeli">N° ADELI : 69 93 XXXX X</p>
+        <p id="footer-copyright"></p>
+        <p class="adeli" id="footer-adeli"></p>
     </footer>
 
-    <!-- Script pour le thème sombre -->
-    <script>
-        (function() {
-            const toggle = document.querySelector('.theme-toggle');
-            const html = document.documentElement;
-
-            // Charger le thème sauvegardé ou préférence système
-            const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-                html.setAttribute('data-theme', 'dark');
-            }
-
-            // Toggle au clic
-            toggle.addEventListener('click', function() {
-                const isDark = html.getAttribute('data-theme') === 'dark';
-                if (isDark) {
-                    html.removeAttribute('data-theme');
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    html.setAttribute('data-theme', 'dark');
-                    localStorage.setItem('theme', 'dark');
-                }
-            });
-        })();
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
