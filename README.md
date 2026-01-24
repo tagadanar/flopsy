@@ -1,5 +1,7 @@
 # Guide pour modifier le site web
 
+https://tagadanar.github.io/flopsy/
+
 ## Comment modifier le contenu du site ?
 
 Tout le texte du site se trouve dans un seul fichier : **`content.json`**
