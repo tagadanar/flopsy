@@ -358,7 +358,7 @@ section h2 {
     background-image: url('chaos-to-clarity.png');
     width: clamp(600px, 75vw, 1200px);
     height: clamp(270px, 33vw, 540px);
-    right: -10%;
+    right: -20%;
     bottom: 15%;
 }
 
