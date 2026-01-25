@@ -157,21 +157,26 @@ git clone https://github.com/tagadanar/flopsy.git
 1. Modifiez les fichiers avec un éditeur de texte (Bloc-notes, TextEdit, ou [Visual Studio Code](https://code.visualstudio.com/))
 2. Sauvegardez le fichier
 3. Rafraîchissez la page dans votre navigateur (F5 ou Cmd+R) pour voir le résultat
+4. Répétez jusqu'à ce que vous soyez satisfaite du résultat
 
-### Étape 5 : Publier vos modifications (optionnel)
+### Étape 5 : Publier vos modifications
 
-Si vous êtes satisfait de vos changements et souhaitez les publier :
+Une fois vos tests terminés, publiez vos changements via le site GitHub (c'est plus simple que la ligne de commande) :
 
-1. Ouvrez un terminal dans le dossier `flopsy`
-2. Tapez ces commandes une par une :
+**Pour un fichier texte (comme `styles.css` ou `content.json`) :**
+1. Allez sur [github.com/tagadanar/flopsy](https://github.com/tagadanar/flopsy)
+2. Cliquez sur le fichier que vous avez modifié
+3. Cliquez sur l'icône **crayon** (en haut à droite)
+4. Sélectionnez tout (Ctrl+A ou Cmd+A), puis collez le contenu de votre fichier local
+5. Cliquez sur **Commit changes**
 
-```bash
-git add .
-git commit -m "Description de vos modifications"
-git push
-```
+**Pour une image :**
+1. Allez sur [github.com/tagadanar/flopsy](https://github.com/tagadanar/flopsy)
+2. Cliquez sur **Add file** > **Upload files**
+3. Glissez votre nouvelle image (avec le même nom que celle à remplacer)
+4. Cliquez sur **Commit changes**
 
-> **Note :** Pour pouvoir publier, vous devez avoir les droits d'accès au dépôt GitHub.
+> **Note :** Vous devez être connectée à GitHub et avoir les droits d'accès au dépôt.
 
 ---
 
