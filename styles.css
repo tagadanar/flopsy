@@ -145,7 +145,7 @@ nav a:hover {
     position: absolute;
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.06;
+    opacity: 0.1;
     pointer-events: none;
     z-index: 0;
 }
@@ -258,7 +258,7 @@ section h2 {
     right: -30px;
     top: 50%;
     transform: translateY(-50%);
-    opacity: 0.05;
+    opacity: 0.08;
     pointer-events: none;
     z-index: 0;
 }
@@ -340,7 +340,7 @@ section h2 {
     position: absolute;
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.08;
+    opacity: 0.12;
     pointer-events: none;
     z-index: 0;
 }
@@ -424,7 +424,7 @@ section h2 {
     height: clamp(300px, 36vw, 560px);
     left: 2%;
     bottom: 10%;
-    opacity: 0.05;
+    opacity: 0.08;
     pointer-events: none;
     z-index: 0;
 }
