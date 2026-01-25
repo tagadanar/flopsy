@@ -163,7 +163,7 @@ nav a:hover {
     width: clamp(360px, 45vw, 720px);
     height: clamp(360px, 45vw, 720px);
     right: 8%;
-    top: 2%;
+    top: 0;
 }
 
 [data-theme="dark"] .hero::before,
