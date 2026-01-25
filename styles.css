@@ -356,8 +356,8 @@ section h2 {
 
 .consultations::after {
     background-image: url('chaos-to-clarity.png');
-    width: clamp(400px, 50vw, 800px);
-    height: clamp(180px, 22vw, 360px);
+    width: clamp(600px, 75vw, 1200px);
+    height: clamp(270px, 33vw, 540px);
     right: -10%;
     bottom: 15%;
 }
