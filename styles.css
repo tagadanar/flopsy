@@ -152,16 +152,16 @@ nav a:hover {
 
 .hero::before {
     background-image: url('lotus-flower.png');
-    width: clamp(150px, 20vw, 320px);
-    height: clamp(150px, 20vw, 320px);
+    width: clamp(300px, 40vw, 640px);
+    height: clamp(300px, 40vw, 640px);
     left: 5%;
     bottom: 10%;
 }
 
 .hero::after {
     background-image: url('hummingbird.png');
-    width: clamp(120px, 15vw, 240px);
-    height: clamp(120px, 15vw, 240px);
+    width: clamp(360px, 45vw, 720px);
+    height: clamp(360px, 45vw, 720px);
     right: 8%;
     top: 15%;
 }
@@ -253,8 +253,8 @@ section h2 {
     background-image: url('hands-cradling-lotus.png');
     background-size: contain;
     background-repeat: no-repeat;
-    width: clamp(180px, 22vw, 360px);
-    height: clamp(180px, 22vw, 360px);
+    width: clamp(360px, 44vw, 720px);
+    height: clamp(360px, 44vw, 720px);
     right: -30px;
     top: 50%;
     transform: translateY(-50%);
@@ -347,8 +347,8 @@ section h2 {
 
 .consultations::before {
     background-image: url('chaos-to-order.png');
-    width: clamp(180px, 22vw, 350px);
-    height: clamp(120px, 15vw, 230px);
+    width: clamp(360px, 44vw, 700px);
+    height: clamp(240px, 30vw, 460px);
     left: -50px;
     top: 50%;
     transform: translateY(-50%);
@@ -356,8 +356,8 @@ section h2 {
 
 .consultations::after {
     background-image: url('chaos-to-clarity.png');
-    width: clamp(200px, 25vw, 400px);
-    height: clamp(90px, 11vw, 180px);
+    width: clamp(400px, 50vw, 800px);
+    height: clamp(180px, 22vw, 360px);
     right: -50px;
     bottom: 15%;
 }
@@ -420,8 +420,8 @@ section h2 {
     background-image: url('hand-holding-lotus.png');
     background-size: contain;
     background-repeat: no-repeat;
-    width: clamp(150px, 18vw, 280px);
-    height: clamp(150px, 18vw, 280px);
+    width: clamp(300px, 36vw, 560px);
+    height: clamp(300px, 36vw, 560px);
     left: 2%;
     bottom: 10%;
     opacity: 0.05;
