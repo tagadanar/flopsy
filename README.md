@@ -9,6 +9,7 @@ https://tagadanar.github.io/flopsy/
 - [Comment publier les modifications ?](#comment-publier-les-modifications-)
 - [Structure des fichiers](#structure-des-fichiers)
 - [Comment modifier les images de fond ?](#comment-modifier-les-images-de-fond-)
+- [Comment ajouter ou supprimer une image ?](#comment-ajouter-ou-supprimer-une-image-)
 - [Comment tester les modifications sur votre ordinateur ?](#comment-tester-les-modifications-sur-votre-ordinateur-) (avancé)
 - [Problèmes fréquents](#problèmes-fréquents)
 - [Besoin d'aide ?](#besoin-daide-)
@@ -89,7 +90,7 @@ Modifiez les lignes d'adresse et les coordonnées GPS. La carte se mettra à jou
 | `index.html` | Structure de la page (ne pas toucher) |
 | `styles.css` | Apparence visuelle (ne pas toucher) |
 | `script.js` | Fonctionnement (ne pas toucher) |
-| `*.png` | Images de fond (voir section dédiée) |
+| `img/` | Dossier contenant toutes les images de fond |
 
 ---
 
@@ -108,21 +109,24 @@ Le site utilise des illustrations en arrière-plan de chaque section. Ces images
 
 ### Liste des images utilisées
 
+Toutes les images se trouvent dans le dossier `img/`.
+
 | Image | Section | Position |
 |-------|---------|----------|
-| `lotus-flower.png` | Accueil | En bas à gauche |
-| `hummingbird.png` | Accueil | En haut à droite |
-| `hands-cradling-lotus.png` | À propos | À droite |
-| `chaos-to-order.png` | Consultations | À gauche |
-| `chaos-to-clarity.png` | Consultations | À droite |
-| `hand-holding-lotus.png` | Contact | En bas à gauche |
+| `img/lotus-flower.png` | Accueil | En bas à gauche |
+| `img/hummingbird.png` | Accueil | En haut à droite |
+| `img/hands-cradling-lotus.png` | À propos | À droite |
+| `img/chaos-to-order.png` | Consultations | À gauche |
+| `img/chaos-to-clarity.png` | Consultations | À droite |
+| `img/hand-holding-lotus.png` | Contact | En bas à gauche |
 
 ### Remplacer une image
 
 1. Préparez votre nouvelle image (de préférence un dessin au trait noir sur fond transparent, format PNG)
 2. Nommez-la exactement comme l'image que vous voulez remplacer (ex: `hummingbird.png`)
-3. Sur GitHub, allez dans le dépôt et cliquez sur **Add file** > **Upload files**
-4. Glissez votre nouvelle image et cliquez sur **Commit changes**
+3. Sur GitHub, allez dans le dépôt et ouvrez le dossier **img**
+4. Cliquez sur **Add file** > **Upload files**
+5. Glissez votre nouvelle image et cliquez sur **Commit changes**
 
 ### Modifier la taille ou la position
 
@@ -130,7 +134,7 @@ Les réglages se trouvent dans le fichier `styles.css`. Cherchez le nom de l'ima
 
 ```css
 .hero::after {
-    background-image: url('hummingbird.png');
+    background-image: url('img/hummingbird.png');
     width: clamp(360px, 45vw, 720px);   /* Largeur */
     height: clamp(360px, 45vw, 720px);  /* Hauteur */
     right: 8%;                           /* Distance depuis la droite */
@@ -228,6 +232,89 @@ opacity: 1;     /* 100% visible - opaque */
 
 ---
 
+## Comment ajouter ou supprimer une image ?
+
+Cette section explique comment ajouter une nouvelle image décorative ou retirer une image existante. Ces opérations nécessitent de modifier le fichier `styles.css`.
+
+### Supprimer une image
+
+Pour retirer une image de fond d'une section :
+
+1. Sur GitHub, ouvrez le fichier `styles.css`
+2. Cliquez sur l'icône **crayon** pour modifier
+3. Cherchez le nom de l'image que vous voulez supprimer (ex: `hummingbird.png`)
+4. Supprimez tout le bloc de code qui contient cette image
+
+**Exemple :** pour supprimer le colibri de la page d'accueil, supprimez ces lignes :
+
+```css
+.hero::after {
+    background-image: url('img/hummingbird.png');
+    width: clamp(360px, 45vw, 720px);
+    height: clamp(360px, 45vw, 720px);
+    right: 8%;
+    top: 0;
+}
+```
+
+5. Cliquez sur **Commit changes**
+
+> **Note :** L'image restera dans le dossier `img/` mais ne sera plus affichée. Vous pouvez la supprimer manuellement si vous le souhaitez.
+
+### Ajouter une nouvelle image
+
+Pour ajouter une image décorative à une section existante :
+
+**Étape 1 : Téléversez votre image**
+
+1. Préparez votre image (PNG avec fond transparent recommandé)
+2. Sur GitHub, ouvrez le dossier **img**
+3. Cliquez sur **Add file** > **Upload files**
+4. Glissez votre image et cliquez sur **Commit changes**
+5. Notez le nom exact de votre fichier (ex: `mon-image.png`)
+
+**Étape 2 : Ajoutez le code CSS**
+
+1. Ouvrez le fichier `styles.css` et cliquez sur le **crayon**
+2. Trouvez la section où vous voulez ajouter l'image :
+   - `.hero` = Accueil
+   - `.apropos` = À propos
+   - `.consultations` = Consultations
+   - `.contact` = Contact
+3. Copiez-collez ce modèle de code juste après le bloc existant de cette section :
+
+```css
+.NOM-SECTION::after {
+    content: "";
+    position: absolute;
+    background-image: url('img/mon-image.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 400px;
+    height: 400px;
+    right: 10%;
+    bottom: 10%;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 0;
+}
+```
+
+4. Remplacez `NOM-SECTION` par le nom de la section (ex: `hero`, `apropos`, `consultations`, `contact`)
+5. Remplacez `mon-image.png` par le nom de votre fichier
+6. Ajustez la taille, la position et l'opacité selon vos goûts
+7. Cliquez sur **Commit changes**
+
+**Utiliser `::before` ou `::after` ?**
+
+Chaque section peut avoir deux images de fond :
+- `::before` = première image
+- `::after` = deuxième image
+
+Si la section a déjà un `::before`, utilisez `::after` (et vice versa). Si les deux sont pris, il faudra remplacer une image existante.
+
+---
+
 ## Comment tester les modifications sur votre ordinateur ?
 
 > **Note :** Cette section est destinée aux utilisateurs avancés. Vous pouvez très bien modifier le site directement sur GitHub sans passer par ces étapes.
@@ -293,9 +380,10 @@ Une fois vos tests terminés, publiez vos changements via le site GitHub (c'est 
 
 **Pour une image :**
 1. Allez sur [github.com/tagadanar/flopsy](https://github.com/tagadanar/flopsy)
-2. Cliquez sur **Add file** > **Upload files**
-3. Glissez votre nouvelle image (avec le même nom que celle à remplacer)
-4. Cliquez sur **Commit changes**
+2. Ouvrez le dossier **img**
+3. Cliquez sur **Add file** > **Upload files**
+4. Glissez votre nouvelle image (avec le même nom que celle à remplacer)
+5. Cliquez sur **Commit changes**
 
 > **Note :** Vous devez être connectée à GitHub et avoir les droits d'accès au dépôt.
 
