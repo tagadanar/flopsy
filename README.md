@@ -94,26 +94,97 @@ Les réglages se trouvent dans le fichier `styles.css`. Cherchez le nom de l'ima
 ```css
 .hero::after {
     background-image: url('hummingbird.png');
-    width: clamp(360px, 45vw, 720px);   /* Largeur : minimum, préférée, maximum */
-    height: clamp(360px, 45vw, 720px);  /* Hauteur : minimum, préférée, maximum */
+    width: clamp(360px, 45vw, 720px);   /* Largeur */
+    height: clamp(360px, 45vw, 720px);  /* Hauteur */
     right: 8%;                           /* Distance depuis la droite */
     top: 0;                              /* Distance depuis le haut */
 }
 ```
 
-**Comprendre les valeurs :**
-- `width` / `height` : La taille. Le format `clamp(min, préféré, max)` permet à l'image de s'adapter à la taille de l'écran
-- `right`, `left` : Distance horizontale (depuis la droite ou la gauche)
-- `top`, `bottom` : Distance verticale (depuis le haut ou le bas)
-- Les valeurs négatives (ex: `right: -30%`) font dépasser l'image du bord
+### Comprendre les unités de mesure
+
+| Unité | Signification | Exemple |
+|-------|---------------|---------|
+| `px` | Pixels - taille fixe | `200px` = toujours 200 pixels |
+| `%` | Pourcentage de la section parente | `50%` = moitié de la largeur de la section |
+| `vw` | Pourcentage de la largeur de l'écran | `45vw` = 45% de la largeur de l'écran |
+
+**Exemples concrets :**
+- Sur un écran de 1000px de large : `45vw` = 450px
+- Sur un téléphone de 400px de large : `45vw` = 180px
+- `50%` dans une section = moitié de cette section
+
+### Comprendre `clamp(minimum, idéal, maximum)`
+
+La fonction `clamp()` permet à l'image de s'adapter à la taille de l'écran tout en restant dans des limites :
+
+```css
+width: clamp(360px, 45vw, 720px);
+```
+
+Cela signifie :
+- **Minimum** : jamais plus petit que 360px
+- **Idéal** : essaie d'être à 45% de la largeur de l'écran
+- **Maximum** : jamais plus grand que 720px
+
+| Taille écran | Calcul 45vw | Résultat final |
+|--------------|-------------|----------------|
+| Téléphone (400px) | 180px | **360px** (minimum appliqué) |
+| Tablette (900px) | 405px | **405px** (valeur idéale) |
+| Grand écran (2000px) | 900px | **720px** (maximum appliqué) |
+
+**Astuce :** Pour une taille fixe (qui ne change pas), utilisez simplement des pixels :
+```css
+width: 400px;
+height: 400px;
+```
+
+### Comprendre la position
+
+L'image est placée par rapport aux bords de sa section :
+
+```
+┌─────────────────────────────────┐
+│  top: 0                         │
+│  ┌─────┐                        │
+│  │image│                        │
+│  └─────┘                        │
+│  left: 5%                       │
+│                                 │
+│                    right: 10%   │
+│                    ┌─────┐      │
+│                    │image│      │
+│                    └─────┘      │
+│                    bottom: 15%  │
+└─────────────────────────────────┘
+```
+
+**Options de position :**
+- `top: 0` → collée en haut
+- `bottom: 15%` → à 15% du bas
+- `left: 5%` → à 5% de la gauche
+- `right: 10%` → à 10% de la droite
+
+**Valeurs négatives = dépasse du bord :**
+- `right: -30%` → l'image dépasse de 30% sur la droite (partiellement cachée)
+- `left: -50px` → l'image dépasse de 50px sur la gauche
 
 ### Modifier la transparence
 
 Dans `styles.css`, cherchez `opacity` près du nom de l'image :
 
 ```css
-opacity: 0.1;  /* 0.1 = 10% visible, 0.5 = 50% visible, 1 = 100% visible */
+opacity: 0.1;   /* 10% visible - très transparent */
+opacity: 0.3;   /* 30% visible - assez transparent */
+opacity: 0.5;   /* 50% visible - semi-transparent */
+opacity: 1;     /* 100% visible - opaque */
 ```
+
+**Valeurs actuelles du site :**
+- Accueil (hero) : `0.1` (10%)
+- À propos : `0.08` (8%)
+- Consultations : `0.12` (12%)
+- Contact : `0.08` (8%)
 
 ---
 
