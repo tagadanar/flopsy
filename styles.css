@@ -581,13 +581,4 @@ footer .adeli {
         font-size: 2rem;
     }
 
-    /* Hide decorative backgrounds on mobile */
-    .hero::before,
-    .hero::after,
-    .apropos::before,
-    .consultations::before,
-    .consultations::after,
-    .contact::before {
-        display: none;
-    }
 }
