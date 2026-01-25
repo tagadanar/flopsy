@@ -151,7 +151,7 @@ nav a:hover {
 }
 
 .hero::before {
-    background-image: url('lotus-flower.jpg');
+    background-image: url('lotus-flower.png');
     width: 280px;
     height: 280px;
     left: 5%;
@@ -159,7 +159,7 @@ nav a:hover {
 }
 
 .hero::after {
-    background-image: url('hummingbird.jpg');
+    background-image: url('hummingbird.png');
     width: 200px;
     height: 200px;
     right: 8%;
@@ -250,7 +250,7 @@ section h2 {
 .apropos::before {
     content: "";
     position: absolute;
-    background-image: url('hands-cradling-lotus.jpg');
+    background-image: url('hands-cradling-lotus.png');
     background-size: contain;
     background-repeat: no-repeat;
     width: 320px;
@@ -346,7 +346,7 @@ section h2 {
 }
 
 .consultations::before {
-    background-image: url('chaos-to-order.jpg');
+    background-image: url('chaos-to-order.png');
     width: 300px;
     height: 200px;
     left: -50px;
@@ -355,7 +355,7 @@ section h2 {
 }
 
 .consultations::after {
-    background-image: url('chaos-to-clarity.jpg');
+    background-image: url('chaos-to-clarity.png');
     width: 350px;
     height: 150px;
     right: -50px;
@@ -417,7 +417,7 @@ section h2 {
 .contact::before {
     content: "";
     position: absolute;
-    background-image: url('hand-holding-lotus.jpg');
+    background-image: url('hand-holding-lotus.png');
     background-size: contain;
     background-repeat: no-repeat;
     width: 250px;
