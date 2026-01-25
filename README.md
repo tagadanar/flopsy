@@ -2,6 +2,33 @@
 
 https://tagadanar.github.io/flopsy/
 
+## Table des matières
+
+- [Référence rapide](#référence-rapide)
+- [Comment modifier le contenu du site ?](#comment-modifier-le-contenu-du-site-)
+- [Comment publier les modifications ?](#comment-publier-les-modifications-)
+- [Structure des fichiers](#structure-des-fichiers)
+- [Comment modifier les images de fond ?](#comment-modifier-les-images-de-fond-)
+- [Comment tester les modifications sur votre ordinateur ?](#comment-tester-les-modifications-sur-votre-ordinateur-) (avancé)
+- [Problèmes fréquents](#problèmes-fréquents)
+- [Besoin d'aide ?](#besoin-daide-)
+
+---
+
+## Référence rapide
+
+Les modifications les plus courantes dans `content.json` :
+
+| Je veux modifier... | Section à chercher | Exemple |
+|---------------------|-------------------|---------|
+| L'adresse du cabinet | `"adresse"` | `"lines": ["86 rue Paul Bert", "69003 Lyon"]` |
+| Le lien Doctolib | `"doctolib"` | `"url": "https://www.doctolib.fr/..."` |
+| L'email | `"email"` | `"value": "exemple@email.com"` |
+| Les horaires | `"horaires"` | `"lines": ["Lundi - Vendredi", "9h - 19h"]` |
+| Le texte d'accueil | `"hero"` | `"accroche": "Votre nouveau texte"` |
+
+---
+
 ## Comment modifier le contenu du site ?
 
 Tout le texte du site se trouve dans un seul fichier : **`content.json`**
@@ -62,12 +89,22 @@ Modifiez les lignes d'adresse et les coordonnées GPS. La carte se mettra à jou
 | `index.html` | Structure de la page (ne pas toucher) |
 | `styles.css` | Apparence visuelle (ne pas toucher) |
 | `script.js` | Fonctionnement (ne pas toucher) |
+| `*.png` | Images de fond (voir section dédiée) |
 
 ---
 
 ## Comment modifier les images de fond ?
 
 Le site utilise des illustrations en arrière-plan de chaque section. Ces images sont des dessins au trait avec un fond transparent.
+
+### Spécifications recommandées
+
+- **Format** : PNG avec fond transparent
+- **Style** : Dessin au trait noir (line art)
+- **Dimensions** : Entre 800px et 1500px de large (l'image sera redimensionnée automatiquement)
+- **Poids** : Moins de 500 Ko si possible (pour un chargement rapide)
+
+> **Astuce** : Vous pouvez utiliser des outils en ligne comme [remove.bg](https://remove.bg) pour rendre le fond d'une image transparent.
 
 ### Liste des images utilisées
 
@@ -193,6 +230,8 @@ opacity: 1;     /* 100% visible - opaque */
 
 ## Comment tester les modifications sur votre ordinateur ?
 
+> **Note :** Cette section est destinée aux utilisateurs avancés. Vous pouvez très bien modifier le site directement sur GitHub sans passer par ces étapes.
+
 Avant de publier des changements, vous pouvez les tester localement. Voici comment faire :
 
 ### Étape 1 : Installer Git
@@ -226,6 +265,14 @@ git clone https://github.com/tagadanar/flopsy.git
 2. Double-cliquez sur le fichier `index.html`
 3. Le site s'ouvre dans votre navigateur
 
+### Vérifier l'affichage sur mobile
+
+Pour voir à quoi ressemble le site sur un téléphone :
+1. Ouvrez le site dans Chrome ou Firefox
+2. Appuyez sur **F12** (ou clic droit > "Inspecter")
+3. Cliquez sur l'icône de téléphone/tablette en haut à gauche du panneau
+4. Choisissez un appareil dans la liste déroulante (ex: "iPhone 12")
+
 ### Étape 4 : Faire des modifications
 
 1. Modifiez les fichiers avec un éditeur de texte (Bloc-notes, TextEdit, ou [Visual Studio Code](https://code.visualstudio.com/))
@@ -254,6 +301,56 @@ Une fois vos tests terminés, publiez vos changements via le site GitHub (c'est 
 
 ---
 
+## Problèmes fréquents
+
+### Mes modifications n'apparaissent pas sur le site
+
+**Solution :** Après avoir cliqué sur "Commit changes", le site met quelques minutes à se mettre à jour (généralement 1 à 3 minutes). Rafraîchissez la page en vidant le cache : **Ctrl+Shift+R** (Windows) ou **Cmd+Shift+R** (Mac).
+
+### La carte ne s'affiche pas au bon endroit
+
+**Cause probable :** Les coordonnées GPS sont incorrectes ou inversées.
+
+**Solution :** Vérifiez que :
+- La latitude est en premier (ex: `45.7597`)
+- La longitude est en second (ex: `4.8565`)
+- Les valeurs utilisent un point (`.`) et non une virgule
+
+### Le site affiche une page blanche ou une erreur
+
+**Cause probable :** Une erreur de syntaxe dans `content.json` (virgule manquante, guillemet oublié, etc.)
+
+**Solution :**
+1. Vérifiez que chaque texte est entre guillemets : `"texte"`
+2. Vérifiez qu'il y a une virgule après chaque élément (sauf le dernier d'une liste)
+3. Utilisez l'historique GitHub pour revenir à une version précédente (voir ci-dessous)
+
+### Comment revenir à une version précédente ?
+
+GitHub garde un historique de toutes les modifications. Pour revenir en arrière :
+
+1. Allez sur [github.com/tagadanar/flopsy](https://github.com/tagadanar/flopsy)
+2. Cliquez sur le fichier concerné (ex: `content.json`)
+3. Cliquez sur **History** (en haut à droite)
+4. Trouvez la version qui fonctionnait et cliquez dessus
+5. Cliquez sur les **trois points** (⋯) puis **View file**
+6. Copiez le contenu et collez-le dans la version actuelle du fichier
+
+---
+
 ## Besoin d'aide ?
 
-Si vous avez un doute, faites une copie de `content.json` avant de le modifier. Comme ça, vous pouvez toujours revenir en arrière.
+### Avant de modifier
+
+Faites une copie de `content.json` avant de le modifier. Comme ça, vous pouvez toujours revenir en arrière facilement.
+
+### Rien n'est perdu
+
+GitHub conserve **toutes les versions** de vos fichiers. Même si vous faites une erreur, vous pouvez toujours retrouver une version précédente (voir "Comment revenir à une version précédente ?" ci-dessus).
+
+### Historique des modifications
+
+Pour voir toutes les modifications passées :
+1. Allez sur [github.com/tagadanar/flopsy](https://github.com/tagadanar/flopsy)
+2. Cliquez sur **"X commits"** (en haut de la liste des fichiers)
+3. Vous verrez la liste de tous les changements avec leur date
