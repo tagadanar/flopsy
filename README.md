@@ -144,26 +144,29 @@ height: 400px;
 L'image est placée par rapport aux bords de sa section :
 
 ```
-┌─────────────────────────────────┐
-│  top: 0                         │
-│  ┌─────┐                        │
-│  │image│                        │
-│  └─────┘                        │
-│  left: 5%                       │
-│                                 │
-│                    right: 10%   │
-│                    ┌─────┐      │
-│                    │image│      │
-│                    └─────┘      │
-│                    bottom: 15%  │
-└─────────────────────────────────┘
+             ↑ top: 10%
+             │
+    ┌────────┼──────────────────────┐
+    │        ▼                      │
+    │←5%→┌─────┐                    │
+    │    │image│                    │
+    │    └─────┘                    │
+    │    left: 5%                   │
+    │                               │
+    │                  ┌─────┐←10%→ │
+    │                  │image│      │
+    │                  └─────┘      │
+    │                      ▲        │
+    └──────────────────────┼────────┘
+                           │
+                    bottom: 15% (↓ 15% du bas)
 ```
 
 **Options de position :**
-- `top: 0` → collée en haut
-- `bottom: 15%` → à 15% du bas
-- `left: 5%` → à 5% de la gauche
-- `right: 10%` → à 10% de la droite
+- `top: 10%` → à 10% du bord haut
+- `bottom: 15%` → à 15% du bord bas
+- `left: 5%` → à 5% du bord gauche
+- `right: 10%` → à 10% du bord droit
 
 **Valeurs négatives = dépasse du bord :**
 - `right: -30%` → l'image dépasse de 30% sur la droite (partiellement cachée)
