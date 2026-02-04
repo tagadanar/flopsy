@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "Florianne Duré - Psychologue Clinicienne à Lyon",
-    "description": "Florianne Duré, psychologue clinicienne à Lyon 3ème. Consultations sur rendez-vous. Accompagnement personnalisé pour adultes et adolescents."
+    "description": "Florianne Duré, psychologue clinicienne et psychothérapeute à Lyon 3ème. Consultations sur rendez-vous. Accompagnement personnalisé pour adultes et adolescents."
   },
   "hero": {
     "name": "Florianne Duré",
@@ -15,8 +15,9 @@
     "parcoursTitle": "Mon parcours",
     "parcours": [
       "Master 2 en Psychologie Clinique et Psychopathologie",
-      "Formation complémentaire en psychothérapie",
-      "Expérience en milieu hospitalier et institutionnel"
+      "Expérience en milieu hospitalier et institutionnel, dont des services de réhabilitation psychosociale",
+      "Spécialisée dans l'accompagnement des troubles psychiques",
+      "Approche intégrative"
     ]
   },
   "consultations": {
@@ -30,6 +31,10 @@
         "title": "Adolescents",
         "description": "Soutien durant cette période de changements : mal-être, difficultés scolaires, relations familiales..."
       },
+       {
+        "title": "Difficultés psychiques",
+        "description": "Anxiété, ruminations, obsessions, tristesse, idées suicidaires, mélancolie, psychotraumatisme, scarifications, variations de l'humeur, prise de substances ..."
+     },
       {
         "title": "Soutien parental",
         "description": "Accompagnement des parents face aux défis éducatifs et relationnels avec leurs enfants."
@@ -47,7 +52,7 @@
     },
     "horaires": {
       "label": "Horaires",
-      "lines": ["Lundi au Samedi", "10h00 - 19h00"]
+      "lines": ["Mardi, Jeudi", "10h00 - 19h30", "Vendredi", "14h - 19h", "Samedi", "9h - 12h"]
     },
     "email": {
       "label": "Email",
@@ -60,7 +65,7 @@
   },
   "footer": {
     "copyright": "2025 Florianne Duré - Psychologue Clinicienne",
-    "adeli": "N° ADELI : 69 93 XXXX X"
+    "adeli": "N° RPPS : 810010543345"
   },
   "navigation": [
     { "text": "Accueil", "href": "#accueil" },
