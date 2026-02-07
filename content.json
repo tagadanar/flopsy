@@ -38,6 +38,14 @@
       {
         "title": "Soutien parental",
         "description": "Accompagnement des parents face aux défis éducatifs et relationnels avec leurs enfants."
+      },
+      {
+        "title": "Psychoéducation",
+        "description": "Apport d'informations et éclairage clinique afin de permettre de mieux appréhender et comprendre ses difficultés et son fonctionnement."
+      },
+      {
+        "title": "Proches aidants",
+        "description": "Accompagnement des proches venant en aide à une personne en difficulté (maladie, vulnérabilité, souffrance psychique ...)."
       }
     ]
   },
