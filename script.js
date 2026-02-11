@@ -98,6 +98,7 @@ fetch('content.json')
                 <a href="${link.url}" class="ressource-card" target="_blank" rel="noopener">
                     <h3>${link.name}</h3>
                     <p>${link.description}</p>
+                    <span class="card-link-hint">Visiter le site</span>
                 </a>
             `;
         });

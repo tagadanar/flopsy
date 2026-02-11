@@ -576,21 +576,24 @@ section h2 {
 
 .ressource-card {
     display: block;
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.5);
     padding: 1.8rem;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 5px 30px var(--shadow-color);
     text-decoration: none;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 2px solid transparent;
 }
 
 [data-theme="dark"] .ressource-card {
-    background: rgba(42, 42, 42, 0.75);
+    background: rgba(42, 42, 42, 0.5);
 }
 
 .ressource-card:hover {
     transform: translateY(-5px);
+    border-bottom-color: var(--couleur-principale);
+    box-shadow: 0 8px 30px var(--shadow-color);
 }
 
 .ressource-card h3 {
@@ -599,10 +602,29 @@ section h2 {
     font-size: 1.2rem;
 }
 
+.ressource-card h3::after {
+    content: " \2197";
+    font-size: 0.85em;
+}
+
 .ressource-card p {
     color: var(--couleur-texte-clair);
     font-size: 0.9rem;
-    margin-bottom: 0;
+    margin-bottom: 0.8rem;
+}
+
+.ressource-card .card-link-hint {
+    display: inline-block;
+    color: var(--couleur-principale);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    border-bottom: 1px solid var(--couleur-principale);
+    transition: border-color 0.3s ease;
+}
+
+.ressource-card:hover .card-link-hint {
+    border-bottom-color: transparent;
 }
 
 /* ============================================
