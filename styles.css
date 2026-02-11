@@ -541,8 +541,8 @@ section h2 {
     background-image: url('img/lotus-on-water.png');
     background-size: contain;
     background-repeat: no-repeat;
-    width: clamp(400px, 48vw, 780px);
-    height: clamp(400px, 48vw, 780px);
+    width: clamp(440px, 52vw, 840px);
+    height: clamp(440px, 52vw, 840px);
     right: -30px;
     top: 50%;
     transform: translateY(-50%);
