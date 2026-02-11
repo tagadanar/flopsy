@@ -531,6 +531,34 @@ section h2 {
    ============================================ */
 .ressources {
     background-color: var(--couleur-fond);
+    position: relative;
+    overflow: hidden;
+}
+
+.ressources::before {
+    content: "";
+    position: absolute;
+    background-image: url('img/lotus-on-water.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: clamp(360px, 44vw, 720px);
+    height: clamp(360px, 44vw, 720px);
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 0;
+}
+
+[data-theme="dark"] .ressources::before {
+    filter: invert(1);
+    opacity: 0.1;
+}
+
+.ressources .container {
+    position: relative;
+    z-index: 1;
 }
 
 .ressources p {
@@ -548,13 +576,17 @@ section h2 {
 
 .ressource-card {
     display: block;
-    background: var(--couleur-carte);
+    background: rgba(255, 255, 255, 0.75);
     padding: 1.8rem;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 5px 30px var(--shadow-color);
     text-decoration: none;
     transition: transform 0.3s ease;
+}
+
+[data-theme="dark"] .ressource-card {
+    background: rgba(42, 42, 42, 0.75);
 }
 
 .ressource-card:hover {
