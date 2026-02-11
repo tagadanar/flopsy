@@ -603,8 +603,10 @@ section h2 {
 }
 
 .ressource-card h3::after {
-    content: " \2197";
+    content: "\00a0\2197";
     font-size: 0.85em;
+    display: inline;
+    white-space: nowrap;
 }
 
 .ressource-card p {
