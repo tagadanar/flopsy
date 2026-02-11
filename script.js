@@ -89,6 +89,19 @@ fetch('content.json')
         document.getElementById('map-iframe').src =
             `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lng}`;
 
+        // Ressources section
+        document.getElementById('ressources-title').textContent = content.ressources.title;
+        document.getElementById('ressources-description').textContent = content.ressources.description;
+        const ressourcesGrid = document.getElementById('ressources-grid');
+        content.ressources.links.forEach(link => {
+            ressourcesGrid.innerHTML += `
+                <a href="${link.url}" class="ressource-card" target="_blank" rel="noopener">
+                    <h3>${link.name}</h3>
+                    <p>${link.description}</p>
+                </a>
+            `;
+        });
+
         // Footer
         document.getElementById('footer-copyright').innerHTML = `&copy; ${content.footer.copyright}`;
         document.getElementById('footer-adeli').textContent = content.footer.adeli;

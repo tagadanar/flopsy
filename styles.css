@@ -527,6 +527,53 @@ section h2 {
 }
 
 /* ============================================
+   SECTION RESSOURCES
+   ============================================ */
+.ressources {
+    background-color: var(--couleur-fond);
+}
+
+.ressources p {
+    text-align: center;
+    color: var(--couleur-texte-clair);
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+}
+
+.ressources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.ressource-card {
+    display: block;
+    background: var(--couleur-carte);
+    padding: 1.8rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 30px var(--shadow-color);
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.ressource-card:hover {
+    transform: translateY(-5px);
+}
+
+.ressource-card h3 {
+    color: var(--couleur-principale);
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+}
+
+.ressource-card p {
+    color: var(--couleur-texte-clair);
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* ============================================
    FOOTER
    ============================================ */
 footer {

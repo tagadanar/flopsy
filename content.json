@@ -75,6 +75,42 @@
       "url": "https://www.doctolib.fr/psychologue/lyon/florianne-dure"
     }
   },
+  "ressources": {
+    "title": "Liens utiles & Ressources",
+    "description": "Voici une sélection de ressources fiables pour vous informer, trouver du soutien ou accompagner un proche.",
+    "links": [
+      {
+        "name": "Psycom",
+        "url": "https://www.psycom.org",
+        "description": "Information et sensibilisation en santé mentale"
+      },
+      {
+        "name": "Centre ressource réhabilitation psychosociale",
+        "url": "https://centre-ressource-rehabilitation.org",
+        "description": "Ressources sur le rétablissement"
+      },
+      {
+        "name": "UNAFAM",
+        "url": "https://www.unafam.org",
+        "description": "Soutien aux familles et proches aidants"
+      },
+      {
+        "name": "Nightline",
+        "url": "https://www.nightline.fr",
+        "description": "Écoute pour étudiants et jeunes adultes"
+      },
+      {
+        "name": "SOS Amitié",
+        "url": "https://www.sos-amitie.com",
+        "description": "Écoute 24h/24 pour personnes en détresse"
+      },
+      {
+        "name": "Croix-Rouge (soutien psychosocial)",
+        "url": "https://www.croix-rouge.fr/mieux-vivre/soutien-psychologique",
+        "description": "Écoute téléphonique"
+      }
+    ]
+  },
   "footer": {
     "copyright": "2025 Florianne Duré - Psychologue Clinicienne",
     "adeli": "N° RPPS : 10010543345"
@@ -83,6 +119,7 @@
     { "text": "Accueil", "href": "#accueil" },
     { "text": "À propos", "href": "#apropos" },
     { "text": "Consultations", "href": "#consultations" },
-    { "text": "Contact", "href": "#contact" }
+    { "text": "Contact", "href": "#contact" },
+    { "text": "Ressources", "href": "#ressources" }
   ]
 }
