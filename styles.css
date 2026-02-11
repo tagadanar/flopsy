@@ -152,16 +152,16 @@ nav a:hover {
 
 .hero::before {
     background-image: url('img/lotus-flower.png');
-    width: clamp(300px, 40vw, 640px);
-    height: clamp(300px, 40vw, 640px);
+    width: clamp(300px, 40vw, 560px);
+    height: clamp(300px, 40vw, 560px);
     left: 5%;
     bottom: 10%;
 }
 
 .hero::after {
     background-image: url('img/hummingbird.png');
-    width: clamp(360px, 45vw, 720px);
-    height: clamp(360px, 45vw, 720px);
+    width: clamp(360px, 45vw, 640px);
+    height: clamp(360px, 45vw, 640px);
     right: 8%;
     top: 0;
 }
