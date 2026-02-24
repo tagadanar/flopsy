@@ -60,7 +60,7 @@
     },
     "horaires": {
       "label": "Horaires",
-      "lines": ["Mardi, Jeudi", "10h00 - 19h30", "Vendredi", "14h - 19h", "Samedi", "9h - 12h"]
+      "lines": ["Mardi, Jeudi", "10h00 - 19h30", "Vendredi", "14h - 19h", "Samedi", "9h - 16h"]
     },
     "téléphone": {
       "label": "Téléphone",
