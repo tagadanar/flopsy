@@ -27,9 +27,9 @@ fetch('content.json')
     .then(content => {
         // Navigation
         const navLinks = document.getElementById('nav-links');
-        content.navigation.forEach(item => {
-            navLinks.innerHTML += `<li><a href="${item.href}">${item.text}</a></li>`;
-        });
+        navLinks.innerHTML = content.navigation.map(item =>
+            `<li><a href="${item.href}">${item.text}</a></li>`
+        ).join('');
 
         // Hero section
         document.getElementById('hero-name').textContent = content.hero.name;
@@ -42,21 +42,19 @@ fetch('content.json')
         document.getElementById('apropos-description').textContent = content.apropos.description;
         document.getElementById('parcours-title').textContent = content.apropos.parcoursTitle;
         const parcoursList = document.getElementById('parcours-list');
-        content.apropos.parcours.forEach(item => {
-            parcoursList.innerHTML += `<li>${item}</li>`;
-        });
+        parcoursList.innerHTML = content.apropos.parcours.map(item =>
+            `<li>${item}</li>`
+        ).join('');
 
         // Consultations section
         document.getElementById('consultations-title').textContent = content.consultations.title;
         const consultationsGrid = document.getElementById('consultations-grid');
-        content.consultations.cards.forEach(card => {
-            consultationsGrid.innerHTML += `
-                <div class="consultation-card">
-                    <h3>${card.title}</h3>
-                    <p>${card.description}</p>
-                </div>
-            `;
-        });
+        consultationsGrid.innerHTML = content.consultations.cards.map(card =>
+            `<div class="consultation-card">
+                <h3>${card.title}</h3>
+                <p>${card.description}</p>
+            </div>`
+        ).join('');
 
         // Contact section
         document.getElementById('contact-title').textContent = content.contact.title;
@@ -69,6 +67,10 @@ fetch('content.json')
         document.getElementById('horaires-content').innerHTML =
             `<strong>${content.contact.horaires.label}</strong><br>` +
             content.contact.horaires.lines.join('<br>');
+
+        document.getElementById('telephone-content').innerHTML =
+            `<strong>${content.contact.telephone.label}</strong><br>` +
+            `<a href="tel:+33${content.contact.telephone.value.replace(/\s/g, '').substring(1)}">${content.contact.telephone.value}</a>`;
 
         document.getElementById('email-content').innerHTML =
             `<strong>${content.contact.email.label}</strong><br>` +
@@ -89,17 +91,19 @@ fetch('content.json')
         document.getElementById('ressources-title').textContent = content.ressources.title;
         document.getElementById('ressources-description').textContent = content.ressources.description;
         const ressourcesGrid = document.getElementById('ressources-grid');
-        content.ressources.links.forEach(link => {
-            ressourcesGrid.innerHTML += `
-                <a href="${link.url}" class="ressource-card" target="_blank" rel="noopener noreferrer">
-                    <h3>${link.name}</h3>
-                    <p>${link.description}</p>
-                </a>
-            `;
-        });
+        ressourcesGrid.innerHTML = content.ressources.links.map(link =>
+            `<a href="${link.url}" class="ressource-card" target="_blank" rel="noopener noreferrer">
+                <h3>${link.name}</h3>
+                <p>${link.description}</p>
+            </a>`
+        ).join('');
 
         // Footer
         document.getElementById('footer-copyright').innerHTML = `&copy; ${content.footer.copyright}`;
         document.getElementById('footer-adeli').textContent = content.footer.adeli;
     })
-    .catch(error => console.error('Error loading content:', error));
+    .catch(error => {
+        console.error('Error loading content:', error);
+        document.querySelector('main').innerHTML =
+            '<p style="text-align:center;padding:4rem 1rem">Une erreur est survenue lors du chargement du contenu. Veuillez réessayer.</p>';
+    });
