@@ -1,7 +1,10 @@
 {
   "site": {
     "title": "Florianne Duré - Psychologue Clinicienne à Lyon",
-    "description": "Florianne Duré, psychologue clinicienne et psychothérapeute à Lyon 3ème. Consultations sur rendez-vous. Accompagnement personnalisé pour adultes et adolescents."
+    "description": "Florianne Duré, psychologue clinicienne et psychothérapeute à Lyon 3ème. Consultations sur rendez-vous. Accompagnement personnalisé pour adultes et adolescents.",
+    "url": "https://floriannedure-psychologue.com",
+    "ogImage": "https://floriannedure-psychologue.com/img/lotus-flower.png",
+    "locale": "fr_FR"
   },
   "hero": {
     "name": "Florianne Duré",
@@ -60,7 +63,12 @@
     },
     "horaires": {
       "label": "Horaires",
-      "lines": ["Mardi, Jeudi", "10h00 - 19h30", "Vendredi", "14h - 19h", "Samedi", "9h - 16h"]
+      "lines": ["Mardi, Jeudi", "10h00 - 19h30", "Vendredi", "14h - 19h", "Samedi", "9h - 16h"],
+      "structured": [
+        { "days": ["Tuesday", "Thursday"], "opens": "10:00", "closes": "19:30" },
+        { "days": ["Friday"], "opens": "14:00", "closes": "19:00" },
+        { "days": ["Saturday"], "opens": "09:00", "closes": "16:00" }
+      ]
     },
     "téléphone": {
       "label": "Téléphone",

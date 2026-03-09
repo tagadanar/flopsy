@@ -29,6 +29,87 @@ fetch('content.json')
         document.title = content.site.title;
         document.querySelector('meta[name="description"]').content = content.site.description;
 
+        // Canonical URL
+        const canonical = document.createElement('link');
+        canonical.rel = 'canonical';
+        canonical.href = content.site.url;
+        document.head.appendChild(canonical);
+
+        // Open Graph tags
+        const ogTags = {
+            'og:type': 'website',
+            'og:url': content.site.url,
+            'og:title': content.site.title,
+            'og:description': content.site.description,
+            'og:image': content.site.ogImage,
+            'og:locale': content.site.locale
+        };
+        Object.entries(ogTags).forEach(([property, value]) => {
+            const meta = document.createElement('meta');
+            meta.setAttribute('property', property);
+            meta.content = value;
+            document.head.appendChild(meta);
+        });
+
+        // Twitter Card tags
+        const twitterTags = {
+            'twitter:card': 'summary',
+            'twitter:title': content.site.title,
+            'twitter:description': content.site.description,
+            'twitter:image': content.site.ogImage
+        };
+        Object.entries(twitterTags).forEach(([name, value]) => {
+            const meta = document.createElement('meta');
+            meta.name = name;
+            meta.content = value;
+            document.head.appendChild(meta);
+        });
+
+        // JSON-LD structured data
+        const phone = content.contact.téléphone.value.replace(/\s/g, '');
+        const jsonLd = {
+            '@context': 'https://schema.org',
+            '@type': 'ProfessionalService',
+            name: content.hero.name + ' - ' + content.hero.title,
+            description: content.site.description,
+            url: content.site.url,
+            telephone: '+33' + phone.substring(1),
+            email: content.contact.email.value,
+            image: content.site.ogImage,
+            priceRange: '$$',
+            address: {
+                '@type': 'PostalAddress',
+                streetAddress: content.contact.adresse.lines[0],
+                postalCode: content.contact.adresse.lines[1].split(' ')[0],
+                addressLocality: content.contact.adresse.lines[1].split(' ')[1],
+                addressCountry: 'FR'
+            },
+            geo: {
+                '@type': 'GeoCoordinates',
+                latitude: content.contact.adresse.latitude,
+                longitude: content.contact.adresse.longitude
+            },
+            openingHoursSpecification: content.contact.horaires.structured.map(h => ({
+                '@type': 'OpeningHoursSpecification',
+                dayOfWeek: h.days,
+                opens: h.opens,
+                closes: h.closes
+            })),
+            sameAs: [content.contact.doctolib.url],
+            hasOfferCatalog: {
+                '@type': 'OfferCatalog',
+                name: content.consultations.title,
+                itemListElement: content.consultations.cards.map(card => ({
+                    '@type': 'Offer',
+                    itemOffered: { '@type': 'Service', name: card.title }
+                }))
+            }
+        };
+        const ldScript = document.createElement('script');
+        ldScript.type = 'application/ld+json';
+        ldScript.textContent = JSON.stringify(jsonLd);
+        document.head.appendChild(ldScript);
+
         // Navigation
         const navLinks = document.getElementById('nav-links');
         content.navigation.forEach(item => {
