@@ -176,7 +176,7 @@ fetch('content.json')
         const ressourcesGrid = document.getElementById('ressources-grid');
         content.ressources.links.forEach(link => {
             ressourcesGrid.innerHTML += `
-                <a href="${link.url}" class="ressource-card" target="_blank" rel="noopener">
+                <a href="${link.url}" class="ressource-card" target="_blank" rel="noopener noreferrer">
                     <h3>${link.name}</h3>
                     <p>${link.description}</p>
                 </a>
