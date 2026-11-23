@@ -13,12 +13,16 @@ A line naming days is followed by one or more lines of hours. Supported forms:
            "Du lundi au vendredi", "Lundi - Vendredi", "Samedi : 9h - 16h"
     hours: "10h00 - 19h30", "9h-12h", "9h - 12h / 14h - 19h", "10:00 à 19:30"
 
+Also sets <lastmod> in sitemap.xml to the date of the last commit that
+changed the site's content (content.json, index.html, script.js, styles.css).
+
 Run locally:   python3 tools/sync_seo.py          (rewrites index.html)
                python3 tools/sync_seo.py --check  (exit 1 if out of date)
 """
 import html
 import json
 import re
+import subprocess
 import sys
 import unicodedata
 from pathlib import Path
@@ -183,6 +187,24 @@ def build_block(c):
     {END}"""
 
 
+SITE_FILES = ["content.json", "index.html", "script.js", "styles.css", "img"]
+
+
+def synced_sitemap():
+    """sitemap.xml text with <lastmod> = date of the last content commit (None if git is unavailable)."""
+    try:
+        date = subprocess.run(
+            ["git", "log", "-1", "--format=%cs", "--", *SITE_FILES],
+            cwd=ROOT, capture_output=True, text=True, check=True,
+        ).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    if not date:
+        return None
+    sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
+    return re.sub(r"<lastmod>[^<]*</lastmod>", f"<lastmod>{date}</lastmod>", sitemap)
+
+
 def main():
     content = json.loads((ROOT / "content.json").read_text(encoding="utf-8"))
     index_path = ROOT / "index.html"
@@ -196,16 +218,20 @@ def main():
     before, rest = page.split(START)
     _, after = rest.split(END)
     new_page = before + block + after
+    sitemap_path = ROOT / "sitemap.xml"
+    old_sitemap = sitemap_path.read_text(encoding="utf-8")
+    new_sitemap = synced_sitemap() or old_sitemap
     if "--check" in sys.argv:
-        if new_page != page:
-            sys.exit("index.html n'est pas à jour : lancer python3 tools/sync_seo.py")
-        print("index.html à jour")
+        if new_page != page or new_sitemap != old_sitemap:
+            sys.exit("index.html ou sitemap.xml n'est pas à jour : lancer python3 tools/sync_seo.py")
+        print("index.html et sitemap.xml à jour")
         return
-    if new_page != page:
-        index_path.write_text(new_page, encoding="utf-8")
-        print("index.html mis à jour")
-    else:
-        print("index.html déjà à jour")
+    for path, old, new in [(index_path, page, new_page), (sitemap_path, old_sitemap, new_sitemap)]:
+        if new != old:
+            path.write_text(new, encoding="utf-8")
+            print(f"{path.name} mis à jour")
+        else:
+            print(f"{path.name} déjà à jour")
 
 
 if __name__ == "__main__":

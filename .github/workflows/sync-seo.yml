@@ -6,7 +6,7 @@ name: Synchroniser le SEO avec content.json
 on:
   push:
     branches: [master]
-    paths: [content.json, tools/sync_seo.py, index.html]
+    paths: [content.json, index.html, script.js, styles.css, 'img/**', tools/sync_seo.py]
   workflow_dispatch:
 
 permissions:
@@ -21,13 +21,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # date du dernier changement pour sitemap.xml
 
       - name: Régénérer le bloc SEO depuis content.json
         run: python3 tools/sync_seo.py
 
       - name: Enregistrer et republier si quelque chose a changé
         run: |
-          if git diff --quiet index.html; then
+          if git diff --quiet index.html sitemap.xml; then
             echo "Déjà à jour, rien à faire."
             exit 0
           fi

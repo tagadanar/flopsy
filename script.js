@@ -97,7 +97,9 @@ fetch('content.json')
         ).join('');
 
         // Footer
-        document.getElementById('footer-copyright').innerHTML = `&copy; ${content.footer.copyright}`;
+        // Year is added automatically; a year typed in content.json is ignored
+        const copyright = content.footer.copyright.replace(/^\s*\d{4}\s*/, '');
+        document.getElementById('footer-copyright').innerHTML = `&copy; ${new Date().getFullYear()} ${copyright}`;
         document.getElementById('footer-adeli').textContent = content.footer.adeli;
     })
     .catch(error => {

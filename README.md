@@ -44,7 +44,7 @@ Tout le texte du site se trouve dans un seul fichier : **`content.json`**
 | `apropos` | Le texte "À propos" et votre parcours |
 | `consultations` | Les cartes décrivant vos consultations |
 | `contact` | Adresse, horaires, email, lien Doctolib |
-| `footer` | Le copyright et numéro ADELI |
+| `footer` | Le copyright (l'année s'ajoute automatiquement) et numéro RPPS |
 
 ### Exemple : changer l'adresse du cabinet
 
