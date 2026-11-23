@@ -28,6 +28,8 @@ Les modifications les plus courantes dans `content.json` :
 | Les horaires | `"horaires"` | `"lines": ["Lundi - Vendredi", "9h - 19h"]` |
 | Le texte d'accueil | `"hero"` | `"accroche": "Votre nouveau texte"` |
 
+> **Horaires et Google :** après chaque modification de `content.json`, GitHub met à jour tout seul les informations lues par Google (horaires, adresse, téléphone) en 1 à 2 minutes. Pour les horaires, écrivez une ligne de jours suivie d'une ligne d'heures, par exemple `"Mardi, Jeudi"`, `"10h00 - 19h30"` ou `"Lundi au Vendredi"`, `"9h - 12h / 14h - 19h"`. Si GitHub vous envoie un e-mail d'échec, c'est qu'une ligne d'horaire n'a pas été comprise : le site reste en ligne, il suffit de reformuler la ligne.
+
 ---
 
 ## Comment modifier le contenu du site ?
@@ -57,7 +59,7 @@ Dans le fichier `content.json`, trouvez cette partie :
 }
 ```
 
-Modifiez les lignes d'adresse : la carte Google Maps se met à jour automatiquement à partir de ces lignes. Pensez aussi à mettre à jour les coordonnées GPS (utilisées par Google pour le référencement) et le bloc `"address"` / `"geo"` dans `index.html`.
+Modifiez les lignes d'adresse : la carte Google Maps se met à jour automatiquement à partir de ces lignes. Pensez aussi à mettre à jour les coordonnées GPS (utilisées par Google pour le référencement) : elles sont recopiées automatiquement dans `index.html`.
 
 > Pour trouver les coordonnées GPS d'une adresse : allez sur [Google Maps](https://maps.google.com), faites un clic droit sur l'adresse, les coordonnées apparaissent (latitude, longitude).
 
@@ -87,7 +89,8 @@ Modifiez les lignes d'adresse : la carte Google Maps se met à jour automatiquem
 | Fichier | Rôle |
 |---------|------|
 | `content.json` | Tout le texte modifiable |
-| `index.html` | Structure de la page (ne pas toucher) |
+| `index.html` | Structure de la page (ne pas toucher ; le bloc SEO est régénéré automatiquement depuis `content.json`) |
+| `tools/sync_seo.py`, `.github/workflows/` | Synchronisation automatique du SEO (ne pas toucher) |
 | `styles.css` | Apparence visuelle (ne pas toucher) |
 | `script.js` | Fonctionnement (ne pas toucher) |
 | `img/` | Dossier contenant toutes les images de fond |
