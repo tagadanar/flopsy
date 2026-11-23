@@ -2,7 +2,7 @@ name: Synchroniser le SEO avec content.json
 
 # Quand content.json change (par exemple les horaires modifiés depuis GitHub),
 # régénère le bloc SEO de index.html (horaires Google, adresse, téléphone...)
-# puis relance la publication du site.
+# puis le commite (ce qui republie le site).
 on:
   push:
     branches: [master]
@@ -11,7 +11,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
 
 concurrency:
   group: sync-seo
@@ -27,8 +26,6 @@ jobs:
         run: python3 tools/sync_seo.py
 
       - name: Enregistrer et republier si quelque chose a changé
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
           if git diff --quiet index.html; then
             echo "Déjà à jour, rien à faire."
@@ -37,6 +34,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -am "Synchroniser le SEO avec content.json"
-          git push
-          # Un push fait par ce workflow ne relance pas toujours GitHub Pages : on le demande explicitement.
-          gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Relance Pages non nécessaire"
+          git push   # ce push relance automatiquement la publication GitHub Pages
