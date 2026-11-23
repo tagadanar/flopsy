@@ -58,8 +58,8 @@
     "adresse": {
       "label": "Adresse du cabinet",
       "lines": ["86 rue Paul Bert", "69003 Lyon"],
-      "latitude": 45.7597,
-      "longitude": 4.8565
+      "latitude": 45.7569,
+      "longitude": 4.8517
     },
     "horaires": {
       "label": "Horaires",

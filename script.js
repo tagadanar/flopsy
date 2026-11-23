@@ -80,12 +80,10 @@ fetch('content.json')
         doctolibLink.href = content.contact.doctolib.url;
         doctolibLink.textContent = content.contact.doctolib.text;
 
-        // Map - build URL from coordinates
-        const lat = content.contact.adresse.latitude;
-        const lng = content.contact.adresse.longitude;
-        const bbox = `${lng - 0.01},${lat - 0.005},${lng + 0.01},${lat + 0.005}`;
+        // Map - Google Maps embed from the address (labelled pin, no API key needed)
+        const mapQuery = encodeURIComponent(content.contact.adresse.lines.join(', '));
         document.getElementById('map-iframe').src =
-            `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lng}`;
+            `https://maps.google.com/maps?q=${mapQuery}&t=m&z=16&hl=fr&ie=UTF8&iwloc=B&output=embed`;
 
         // Ressources section
         document.getElementById('ressources-title').textContent = content.ressources.title;

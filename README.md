@@ -52,12 +52,12 @@ Dans le fichier `content.json`, trouvez cette partie :
 "adresse": {
   "label": "Adresse du cabinet",
   "lines": ["86 rue Paul Bert", "69003 Lyon"],
-  "latitude": 45.7597,
-  "longitude": 4.8565
+  "latitude": 45.7569,
+  "longitude": 4.8517
 }
 ```
 
-Modifiez les lignes d'adresse et les coordonnées GPS. La carte se mettra à jour automatiquement.
+Modifiez les lignes d'adresse : la carte Google Maps se met à jour automatiquement à partir de ces lignes. Pensez aussi à mettre à jour les coordonnées GPS (utilisées par Google pour le référencement) et le bloc `"address"` / `"geo"` dans `index.html`.
 
 > Pour trouver les coordonnées GPS d'une adresse : allez sur [Google Maps](https://maps.google.com), faites un clic droit sur l'adresse, les coordonnées apparaissent (latitude, longitude).
 
@@ -397,11 +397,11 @@ Une fois vos tests terminés, publiez vos changements via le site GitHub (c'est 
 
 ### La carte ne s'affiche pas au bon endroit
 
-**Cause probable :** Les coordonnées GPS sont incorrectes ou inversées.
+**Cause probable :** La carte est positionnée à partir des lignes d'adresse (`"lines"`). Une faute de frappe dans la rue ou le code postal peut déplacer le repère.
 
-**Solution :** Vérifiez que :
-- La latitude est en premier (ex: `45.7597`)
-- La longitude est en second (ex: `4.8565`)
+**Solution :** Vérifiez l'adresse dans `content.json`, puis les coordonnées GPS (référencement) :
+- La latitude est en premier (ex: `45.7569`)
+- La longitude est en second (ex: `4.8517`)
 - Les valeurs utilisent un point (`.`) et non une virgule
 
 ### Le site affiche une page blanche ou une erreur
